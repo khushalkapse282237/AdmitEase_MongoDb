@@ -42,6 +42,8 @@ const schema=new mong.Schema({
 const Register = new mong.model("signUp",schema)
 module.exports  = Register;
 
+app.use(express.static('public'));
+
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 
