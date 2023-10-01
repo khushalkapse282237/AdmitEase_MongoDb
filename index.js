@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.port || 3000;
 
 // MongoDB setup
 // const MongoClient = require('mongodb').MongoClient;
@@ -8,23 +8,41 @@ const port = 3000;
 
 //Model and databases
 const mong = require("mongoose");
-mong.connect("mongodb://127.0.0.1:27017/k1",{useNewUrlParser: true, useUnifiedTopology: true}).then(()=>{
+mong.connect("mongodb://127.0.0.1:27017/AdmitEase_MongoDb",{useNewUrlParser: true, useUnifiedTopology: true}).then(()=>{
     console.log("database connected successfully done bro");
 }).catch((e)=>{
     console.log("not bro");
 })
 const schema=new mong.Schema({
-    email:{
-        type:String,
-        required:true
-    },
     name:{
         type:String,
         required:true
     },
+    mob:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
+    },
+    college:{
+        type:String,
+        required:false
+    },
+    student:{
+        type:String,
+        required:false
+    },
 });
-const Register = new mong.model("Register",schema)
+const Register = new mong.model("signUp",schema)
 module.exports  = Register;
+
+app.use(express.static('public'));
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -48,8 +66,12 @@ app.listen(port, () => {
 app.post('/addData', async (req, res) => {
     try{
         const inserting = new Register({
+            name:req.body.name,
+            mob:req.body.mob,
             email:req.body.email,
-            name:req.body.name
+            password:req.body.password,
+            college:req.body.college,
+            student:req.body.student,
         })
         const register = await inserting.save();
         res.status(201).render(index);
