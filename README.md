@@ -1,1 +1,1 @@
-# AdmitEase_MongoDb
+# AdmitEase
