@@ -1,4 +1,4 @@
-<<<<<<< HEAD:sign.html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,9 +88,26 @@
               <label for="exampleInputPassword1">Password</label>
               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
+
+            <div class="form-group">
+               <label for="exampleInputEmail1">Who you are? </label>
+           <div style="display: flex;">
+              
+            
+               <label>
+                   <input type="radio" name="page" value="page1"> College/School
+               </label>
+               <br>
+               <label>
+                   <input type="radio" name="page" value="page2"> Student
+               </label>
+               <br>
+               
+            
+           </div>
          
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="submit" class="btn btn-primary"><a href="SignUp.html"> SignUp</a></button>
+           <input type="button" class="btn btn-primary" value="Submit" onclick="openSelectedPage()">
+            <button type="submit" class="btn btn-primary"><a style="text-decoration: none; color: white;" href="SignUp.html">SignUp</a></button>
           </form>
          <!-- form end -->
          <!--  footer -->
@@ -158,5 +175,18 @@
          </div>
       </footer>
       <!-- end footer -->
+      <script>
+         function openSelectedPage() {
+             // Get the selected radio button value
+             var selectedValue = document.querySelector('input[name="page"]:checked').value;
+ 
+             // Redirect to the selected page
+             if (selectedValue === "page1") {
+                 window.location.href = "clg_reg.html";
+             } else if (selectedValue === "page2") {
+                 window.location.href = "student_interface.html";
+             }
+         }
+     </script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
