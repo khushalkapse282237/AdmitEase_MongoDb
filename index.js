@@ -43,6 +43,7 @@ const Register = new mong.model("signUp",schema)
 module.exports  = Register;
 
 app.use(express.static('public'));
+app.use(express.static('external'));
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -53,7 +54,7 @@ app.set('view engine', 'ejs');
 // Routes
 app.get('/', (req, res) => {
   // Render your HTML file with EJS
-  res.render('index');
+  res.render('SignUp');
 });
 
 
@@ -74,7 +75,7 @@ app.post('/addData', async (req, res) => {
             student:req.body.student,
         })
         const register = await inserting.save();
-        res.status(201).render(index);
+        res.status(201).render(SignUp);
     }catch(error){
         res.status(400).send(error);
     }
