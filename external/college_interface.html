@@ -27,14 +27,14 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
    </head>
    <!-- body -->
-   <body class="main-layout inner_page">
+   <body class="main-layout inner_page" style="background-color: #b2c9f3; color: black; font-weight: bold;">
       <!-- loader  -->
       <!-- <div class="loader_bg">
          <div class="loader"><img src="images\loading.gif" alt="#"/></div>
       </div> -->
       <!-- end loader -->
       <!-- header -->
-      <div class="header" style="position: fixed; background: #150364;">
+      <div class="header" style=" background: #150364;">
          <div class="container">
             <div class="row d_flex">
                <div class=" col-md-2 col-sm-3 col logo_section">
@@ -80,35 +80,64 @@
             </div>
          </div>
       </div>
-      <!-- end header inner -->
-     
-      
+    
+
+     <h1 style="text-align: center; background-color: #150364; color: white; margin-top: 20px;">Admission Data</h1>
 
 
-      <table class="table">
-         <thead class="table-dark">
-           sagar
+ 
+      <table class="table" style="margin-top: 20px;" >
+         <thead>
+           <tr>
+             <th scope="col">College_name</th>
+             <th scope="col">Full_name</th>
+             <th scope="col">Fathers_name</th>
+             <th scope="col">Mothers_name</th>
+             <th scope="col">Date_of_birth</th>
+             <th scope="col">Candidate_type</th>
+             <th scope="col">Home_university</th>
+             <th scope="col">Category</th>
+             <th scope="col">Gender</th>
+             <!-- <th scope="col">Category_for_admission</th>
+             <th scope="col">Applied_for_EWS</th>
+             <th scope="col">Person_with_disability</th>
+             <th scope="col">Applied_tfws_seat</th>
+             <th scope="col">Defence_type</th>
+             <th scope="col">Is_orphan_candidate</th>
+             <th scope="col">Minority_candidate_type</th> -->
+          
+           </tr>
          </thead>
          <tbody>
-           jadhav
+            <%if(record.length > 0) { %>
+               <% record.forEach(function(element){ %>
+                  <tr>
+                    <td><%= element.College_name  %></td>
+                    <td><%= element.Full_name  %></td>
+                    <td><%= element.Fathers_name  %></td>
+                    <td><%= element.Mothers_name  %></td>
+                    <td><%= element.Date_of_birth  %></td>
+                    <td><%= element.Candidate_type  %></td>
+                    <td><%= element.Home_university  %></td>
+                    <td><%= element.Category  %></td>
+                    <td><%= element.Gender  %></td>
+                    
+                  </tr>
+                 
+               <% }) %>
+               <% } %>
+            
          </tbody>
        </table>
+       <hr>
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+      
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>

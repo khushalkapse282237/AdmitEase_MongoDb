@@ -155,7 +155,7 @@ const admission_form=new mong.Schema({
 const Register_admission_form = new mong.model("admission_form",admission_form)
 module.exports  = Register_admission_form;
 
-const userdetails = admission_form.find({});
+const userdetails = Register_admission_form.find({});
 
 // Handle form submission
 app.post('/registration_data', async (req, res) => {
@@ -181,12 +181,12 @@ app.post('/registration_data', async (req, res) => {
         })
         const register2 = await inserting.save();
 
-        userdetails.exec(function (error,data) {
-            if(error){
-                console.log("error");
-            }
-            res.status(201).render(index,{record:data});
-        })
+        // userdetails.exec(function (error,data) {
+        //     if(error){
+        //         console.log("error");
+        //     }
+        // })
+        res.status(201).render(index,{record:data});
     }catch(error){
         res.status(400).send(error);
     }
