@@ -83,27 +83,71 @@ app.post('/addData', async (req, res) => {
 
 //table 2 = admission_form
 const admission_form=new mong.Schema({
-    name:{
+    College_name:{
         type:String,
         required:true
     },
-    mob:{
+    Branch:{
         type:String,
         required:true
     },
-    email:{
+    Full_name:{
         type:String,
         required:true
     },
-    password:{
+    Fathers_name:{
         type:String,
         required:true
     },
-    college:{
+    Mothers_name:{
+        type:String,
+        required:true
+    },
+    Date_of_birth:{
+        type:Date,
+        required:true
+    },
+    Candidate_type:{
+        type:String,
+        required:true
+    },
+    Home_university:{
+        type:String,
+        required:true
+    },
+    Category:{
+        type:String,
+        required:true
+    },
+    Category_for_admission:{
+        type:String,
+        required:true
+    },
+    Applied_for_EWS:{
+        type:String,
+        required:true
+    },
+    Person_with_disability:{
+        type:String,
+        required:true
+    },
+    Applied_tfws_seat:{
+        type:String,
+        required:true
+    },
+    Defence_type:{
+        type:String,
+        required:true
+    },
+    Is_orphan_candidate:{
+        type:String,
+        required:true
+    },
+    Minority_candidate_type:{
         type:String,
         required:false
     },
-    student:{
+    Gender:{
         type:String,
         required:false
     },
@@ -115,12 +159,23 @@ module.exports  = Register_admission_form;
 app.post('/registration_data', async (req, res) => {
     try{
         const inserting = new Register_admission_form({
-            name:req.body.name,
-            mob:req.body.mob,
-            email:req.body.email,
-            password:req.body.password,
-            college:req.body.college,
-            student:req.body.student,
+            College_name:req.body.College_name,
+            Branch:req.body.Branch,
+            Full_name:req.body.Full_name,
+            Fathers_name:req.body.Fathers_name,
+            Mothers_name:req.body.Mothers_name,
+            Date_of_birth:req.body.Date_of_birth,
+            Candidate_type:req.body.Candidate_type,
+            Home_university:req.body.Home_university,
+            Category:req.body.Category,
+            Category_for_admission:req.body.Category_for_admission,
+            Applied_for_EWS:req.body.Applied_for_EWS,
+            Person_with_disability:req.body.Person_with_disability,
+            Applied_tfws_seat:req.body.Applied_tfws_seat,
+            Defence_type:req.body.Defence_type,
+            Is_orphan_candidate:req.body.Is_orphan_candidate,
+            Minority_candidate_type:req.body.Minority_candidate_type,
+            Gender:req.body.Gender,
         })
         const register2 = await inserting.save();
         res.status(201).render(index);
