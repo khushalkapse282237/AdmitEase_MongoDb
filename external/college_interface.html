@@ -86,7 +86,7 @@
 
 
  
-      <table class="table" style="margin-top: 20px;" >
+      <table class="table" style="margin-top: 20px;" id="data_send">
          <thead>
            <tr>
              <th scope="col">College_name</th>
@@ -109,7 +109,7 @@
            </tr>
          </thead>
          <tbody>
-            <%if(record.length > 0) { %>
+            <!-- <%if(record.length > 0) { %>
                <% record.forEach(function(element){ %>
                   <tr>
                     <td><%= element.College_name  %></td>
@@ -125,7 +125,22 @@
                   </tr>
                  
                <% }) %>
-               <% } %>
+               <% } %> -->
+
+               <% records.forEach(function(record) { %>
+                  <tr>
+                     <td><%= element.College_name  %></td>
+                     <td><%= element.Full_name  %></td>
+                     <td><%= element.Fathers_name  %></td>
+                     <td><%= element.Mothers_name  %></td>
+                     <td><%= element.Date_of_birth  %></td>
+                     <td><%= element.Candidate_type  %></td>
+                     <td><%= element.Home_university  %></td>
+                     <td><%= element.Category  %></td>
+                     <td><%= element.Gender  %></td>
+                     
+                   </tr>
+              <% }); %>
             
          </tbody>
        </table>
