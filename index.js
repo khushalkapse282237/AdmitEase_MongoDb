@@ -43,6 +43,7 @@ const Register = new mong.model("signUp",schema)
 module.exports  = Register;
 
 app.use(express.static('public'));
+app.use(express.static('external'));
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));

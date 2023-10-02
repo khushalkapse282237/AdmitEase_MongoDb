@@ -13,11 +13,11 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <!-- bootstrap css -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="/bootstrap.min.css">
       <!-- style css -->
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="/style.css">
       <!-- Responsive-->
-      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="stylesheet" href="/responsive.css">
       <!-- fevicon -->
       <link rel="icon" href="images/fevicon.png" type="image/gif" />
       <!-- Tweaks for older IEs-->
@@ -27,21 +27,21 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
    </head>
    <!-- body -->
-   <body class="main-layout inner_page hosting_page">
+   <body class="main-layout inner_page">
       <!-- loader  -->
       <div class="loader_bg">
          <div class="loader"><img src="images/loading.gif" alt="#"/></div>
       </div>
       <!-- end loader -->
       <!-- header -->
-      <div class="header" style="position: fixed;">
+      <div class="header" style="position: fixed; background: #150364;">
          <div class="container">
             <div class="row d_flex">
                <div class=" col-md-2 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
                         <div class="logo">
-                           <a href="index.html"><img src="images\logo-removebg-preview.png" alt="#" /></a>
+                           <a href="index.html"><img src="https://drive.google.com/file/d/1BFmQ4N15tmWLetHfAyTwj-PP8Qhuk2H7/view?usp=drive_link" alt="#" /></a>
                         </div>
                      </div>
                   </div>
@@ -53,13 +53,13 @@
                      </button>
                      <div class="collapse navbar-collapse" id="navbarsExample04">
                         <ul class="navbar-nav mr-auto">
-                           <li class="nav-item">
-                              <a class="nav-link" href="index.html">Home</a>
+                           <li class="nav-item active">
+                              <a class="nav-link" href="index.ejs">Home</a>
                            </li>
                            <li class="nav-item">
                               <a class="nav-link" href="about.html">About</a>
                            </li>
-                           <li class="nav-item active">
+                           <li class="nav-item">
                               <a class="nav-link" href="hosting.html">Hosting</a>
                            </li>
                            <li class="nav-item">
@@ -75,82 +75,52 @@
                </div>
                <div class="col-md-2  d_none">
                   <ul class="email text_align_right">
-                     <li class="nav-item"><a id="nav-link123" href="sign.html">Log In
-                     </a>
-                  </li>
+                     <!-- <li><a href="Javascript:void(0)"> <i class="fa fa-shopping-bag" aria-hidden="true"> <span>0</span></i>
+                        </a>
+                     </li> -->
+                     <li class="nav-item"><a id="nav-link123" href="signin.html">Log In
+                        </a>
+                     </li>
                   </ul>
                </div>
             </div>
          </div>
       </div>
       <!-- end header inner -->
-      <!-- order -->
-      <div class="order">
+      <!-- contact -->
+      <div class="contact">
          <div class="container">
-            <div class="row">
-               <div class="col-md-8 offset-md-2">
+            <div class="row ">
+               <div class="col-md-12">
                   <div class="titlepage text_align_center">
-                     <h2>Check Out Awesome Plans, <br></h2>
-                     <p>One can buy our database for the college/school admission process</p>
+                     <h2>Contact <span class="blue_light">Us</span></h2>
                   </div>
                </div>
-            </div>
-            <div class="row">
-               <div class="col-md-4">
-                  <div id="ho_co" class="order-box_main">
-                     <div class="order-box text_align_center">
-                        <h3>Shared Hosting</h3>
-                        <p>STARTING  <span>&#8377 100</span> PER MONTH</p>
-                        <a href="Javascript:void(0)">Personal use</a>
-                        <ul class="supp">
-                           <li>Unlimited projects</li>
-                           <li>24/7 support</li>
-                           <li>Personal use</li>
-                           <li>Unlimited projects</li>
-                           <li>24/7 support</li>
-                        </ul>
+               <div class="col-md-10 offset-md-1">
+                  <form id="request" class="main_form">
+                     <div class="row">
+                        <div class="col-md-12 ">
+                           <input class="contactus" placeholder="Name" type="type" name=" Name"> 
+                        </div>
+                        <div class="col-md-12">
+                           <input class="contactus" placeholder="Phone number" type="type" name="Phone Number">                          
+                        </div>
+                        <div class="col-md-12">
+                           <input class="contactus" placeholder="Your Email" type="type" name="Email">                          
+                        </div>
+                        <div class="col-md-12">
+                           <textarea class="textarea" placeholder="Message" type="type" Message="Name"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                           <button class="send_btn">Submit Now</button>
+                        </div>
                      </div>
-                     <a class="read_more" href="Javascript:void(0)">Buy Now</a>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div id="ho_co" class="order-box_main">
-                     <div class="order-box text_align_center">
-                        <h3>Reseller Hosting</h3>
-                        <p>STARTING  <span>&#8377 100</span> PER MONTH</p>
-                        <a href="Javascript:void(0)">Personal use</a>
-                        <ul class="supp">
-                           <li>Unlimited projects</li>
-                           <li>24/7 support</li>
-                           <li>Personal use</li>
-                           <li>Unlimited projects</li>
-                           <li>24/7 support</li>
-                        </ul>
-                     </div>
-                     <a class="read_more" href="Javascript:void(0)">Buy Now</a>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div id="ho_co" class="order-box_main">
-                     <div class="order-box text_align_center">
-                        <h3>Dedicated Servers</h3>
-                        <p>STARTING  <span>&#8377 100</span> PER MONTH</p>
-                        <a href="Javascript:void(0)">Personal use</a>
-                        <ul class="supp">
-                           <li>Unlimited projects</li>
-                           <li>24/7 support</li>
-                           <li>Personal use</li>
-                           <li>Unlimited projects</li>
-                           <li>24/7 support</li>
-                        </ul>
-                     </div>
-                     <a class="read_more" href="Javascript:void(0)">Buy Now</a>
-                  </div>
+                  </form>
                </div>
             </div>
          </div>
       </div>
-      <!-- end order -->
+      <!-- contact -->
       <!--  footer -->
       <footer>
          <div class="footer">
