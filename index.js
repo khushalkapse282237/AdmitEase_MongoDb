@@ -54,7 +54,7 @@ app.set('view engine', 'ejs');
 // Routes
 app.get('/', (req, res) => {
   // Render your HTML file with EJS
-  res.render('SignUp');
+  res.render('index');
 });
 
 
@@ -75,7 +75,7 @@ app.post('/addData', async (req, res) => {
             student:req.body.student,
         })
         const register = await inserting.save();
-        res.status(201).render(SignUp);
+        res.status(201).render(index);
     }catch(error){
         res.status(400).send(error);
     }
