@@ -109,8 +109,8 @@
            </tr>
          </thead>
          <tbody>
-            <%if(record.length > 0) { %>
-               <% record.forEach(function(element){ %>
+               <% record.forEach(element => {%>
+                  
                   <tr>
                     <td><%= element.College_name  %></td>
                     <td><%= element.Full_name  %></td>
@@ -123,9 +123,7 @@
                     <td><%= element.Gender  %></td>
                     
                   </tr>
-                 
-               <% }) %>
-               <% } %>
+               <% }); %>
             
          </tbody>
        </table>
