@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
   // Render your HTML file with EJS
   res.render('index');
 });
+
 // Start the server
 app.listen(port, () => {
     console.log('Server(Website) is running');
