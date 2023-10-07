@@ -148,12 +148,16 @@ const admission_form=new mong.Schema({
     },
     Minority_candidate_type:{
         type:String,
-        required:false
+        required:true
     },
     Gender:{
         type:String,
-        required:false
+        required:true
     },
+    fees_paid:{
+        type:String,
+        required:true
+    }
 });
 const Register_admission_form = new mong.model("admission_form",admission_form)
 module.exports  = Register_admission_form;
@@ -181,14 +185,9 @@ app.post('/registration_data', async (req, res) => {
             Is_orphan_candidate:req.body.Is_orphan_candidate,
             Minority_candidate_type:req.body.Minority_candidate_type,
             Gender:req.body.Gender,
+            fees_paid:req.body.fees_paid,
         })
         const register2 = await inserting.save();
-
-        // userdetails.exec(function (error,data) {
-        //     if(error){
-        //         console.log("error");
-        //     }
-        // })
         res.status(201).render(index);
     }catch(error){
         res.status(400).send(error);
@@ -199,6 +198,7 @@ app.post('/registration_data', async (req, res) => {
 
 
 
+
 app.get('/registration_data', async (req, res) => {
     try {
         // Retrieve data from MongoDB using your model
@@ -206,23 +206,56 @@ app.get('/registration_data', async (req, res) => {
 
         // Generate an HTML table dynamically
         let tableHTML = '<table>';
-        tableHTML += '<thead><tr><th>College_name</th><th>Branch</th><th>Full_name</th><th>Fathers_name</th><th>Mothers_name</th><th>Date_of_birth</th><th>Candidate_type</th><th>Home_university</th><th>Category</th><th>Category_for_admission</th><th>Applied_for_EWS</th><th>Person_with_disability</th><th>Applied_tfws_seat</th><th>Defence_type</th><th>Is_orphan_candidate</th><th>Minority_candidate_type</th><th>Gender</th></thead>';
+        tableHTML += '<thead><tr><th>College_name</th><th>Branch</th><th>Full_name</th><th>Fathers_name</th><th>Mothers_name</th><th>Date_of_birth</th><th>Candidate_type</th><th>Home_university</th><th>Category</th><th>Category_for_admission</th><th>Applied_for_EWS</th><th>Person_with_disability</th><th>Applied_tfws_seat</th><th>Defence_type</th><th>Is_orphan_candidate</th><th>Minority_candidate_type</th><th>Gender</th><th>Action</th></thead>';
         tableHTML += '<tbody>';
 
         // Loop through the records and add rows to the table
         records.forEach((record) => {
-            tableHTML += `<tr><td>${record.College_name}</td> <td>${record.Branch}</td> <td>${record.Full_name}</td> <td>${record.Fathers_name}</td> <td>${record.Mothers_name}</td> <td>${record.Date_of_birth}</td> <td>${record.Candidate_type}</td> <td>${record.Home_university}</td> <td>${record.Category}</td> <td>${record.Category_for_admission}</td> <td>${record.Applied_for_EWS}</td> <td>${record.Person_with_disability}</td> <td>${record.Applied_tfws_seat}</td> <td>${record.Defence_type}</td> <td>${record.Is_orphan_candidate}</td> <td>${record.Minority_candidate_type}</td> <td>${record.Gender}</td></tr>`;
+            tableHTML += `<tr><td>${record.College_name}</td> <td>${record.Branch}</td> <td>${record.Full_name}</td> <td>${record.Fathers_name}</td> <td>${record.Mothers_name}</td> <td>${record.Date_of_birth}</td> <td>${record.Candidate_type}</td> <td>${record.Home_university}</td> <td>${record.Category}</td> <td>${record.Category_for_admission}</td> <td>${record.Applied_for_EWS}</td> <td>${record.Person_with_disability}</td> <td>${record.Applied_tfws_seat}</td> <td>${record.Defence_type}</td> <td>${record.Is_orphan_candidate}</td> <td>${record.Minority_candidate_type}</td> <td>${record.Gender}</td> <td><button onclick="deleteRecord('${record._id}')">Delete</button></td></tr>`;
             // Add more columns as needed
         });
 
         tableHTML += '</tbody></table>';
 
+        // Add a JavaScript function to handle record deletion
+        tableHTML += `
+            <script>
+                function deleteRecord(id) {
+                    fetch('/delete_record/' + id, {
+                        method: 'DELETE'
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Reload the page or update the table as needed
+                            window.location.reload();
+                        } else {
+                            alert('Failed to delete the record.');
+                        }
+                    });
+                }
+            </script>
+        `;
+
         // Send the HTML table as the response
-        res.send(tableHTML);3
+        res.send(tableHTML);
     } catch (error) {
         res.status(500).send(error);
     }
 });
+
+// Add a route to handle record deletion
+app.delete('/delete_record/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        // Perform the deletion operation using your model
+        await Register_admission_form.findByIdAndDelete(id);
+        res.json({ success: true });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
 
 // Start the server
 app.listen(port, () => {
