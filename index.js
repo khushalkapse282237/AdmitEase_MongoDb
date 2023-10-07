@@ -218,7 +218,7 @@ app.get('/registration_data', async (req, res) => {
         tableHTML += '</tbody></table>';
 
         // Send the HTML table as the response
-        res.send(tableHTML);
+        res.send(tableHTML);3
     } catch (error) {
         res.status(500).send(error);
     }
