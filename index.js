@@ -162,7 +162,7 @@ const admission_form=new mong.Schema({
 const Register_admission_form = new mong.model("admission_form",admission_form)
 module.exports  = Register_admission_form;
 
-// const userdetails = Register_admission_form.find({});
+const userdetails = Register_admission_form.find({});
 
 // Handle form submission
 app.post('/registration_data', async (req, res) => {
@@ -255,6 +255,7 @@ app.delete('/delete_record/:id', async (req, res) => {
         res.status(500).json({ success: false, error: error.message });
     }
 });
+
 
 
 // Start the server
