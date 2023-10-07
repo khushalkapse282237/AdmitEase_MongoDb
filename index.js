@@ -155,6 +155,8 @@ const admission_form=new mong.Schema({
 const Register_admission_form = new mong.model("admission_form",admission_form)
 module.exports  = Register_admission_form;
 
+// const userdetails = Register_admission_form.find({});
+
 // Handle form submission
 app.post('/registration_data', async (req, res) => {
     try{
@@ -179,8 +181,42 @@ app.post('/registration_data', async (req, res) => {
         })
         const register2 = await inserting.save();
 
+        // userdetails.exec(function (error,data) {
+        //     if(error){
+        //         console.log("error");
+        //     }
+        // })
         res.status(201).render(index);
     }catch(error){
         res.status(400).send(error);
+    }
+
+
+});
+
+
+
+app.get('/registration_data', async (req, res) => {
+    try {
+        // Retrieve data from MongoDB using your model
+        const records = await Register_admission_form.find(); // Change this to your actual model
+
+        // Generate an HTML table dynamically
+        let tableHTML = '<table>';
+        tableHTML += '<thead><tr><th>College_name</th><th>Branch</th><th>Full_name</th><th>Fathers_name</th><th>Mothers_name</th><th>Date_of_birth</th><th>Candidate_type</th><th>Home_university</th><th>Category</th><th>Category_for_admission</th><th>Applied_for_EWS</th><th>Person_with_disability</th><th>Applied_tfws_seat</th><th>Defence_type</th><th>Is_orphan_candidate</th><th>Minority_candidate_type</th><th>Gender</th></thead>';
+        tableHTML += '<tbody>';
+
+        // Loop through the records and add rows to the table
+        records.forEach((record) => {
+            tableHTML += `<tr><td>${record.College_name}</td> <td>${record.Branch}</td> <td>${record.Full_name}</td> <td>${record.Fathers_name}</td> <td>${record.Mothers_name}</td> <td>${record.Date_of_birth}</td> <td>${record.Candidate_type}</td> <td>${record.Home_university}</td> <td>${record.Category}</td> <td>${record.Category_for_admission}</td> <td>${record.Applied_for_EWS}</td> <td>${record.Person_with_disability}</td> <td>${record.Applied_tfws_seat}</td> <td>${record.Defence_type}</td> <td>${record.Is_orphan_candidate}</td> <td>${record.Minority_candidate_type}</td> <td>${record.Gender}</td></tr>`;
+            // Add more columns as needed
+        });
+
+        tableHTML += '</tbody></table>';
+
+        // Send the HTML table as the response
+        res.send(tableHTML);3
+    } catch (error) {
+        res.status(500).send(error);
     }
 });
