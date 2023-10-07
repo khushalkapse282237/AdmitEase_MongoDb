@@ -91,19 +91,15 @@
             <input type="text" placeholder="Enter Yes or No" required name="Is_orphan_candidate">
           </div>
 
-          <div class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Fees payment
-            </a>
-          
-            
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Pay full fee 75000</a></li>
-              <li><a class="dropdown-item" href="#">first installment 25000</a></li>
-              <li><a class="dropdown-item" href="#">second installment 25000</a></li>
-              <li><a class="dropdown-item" href="#">third installment 25000</a></li>
-            </ul>
-          </div>
+          <label for="dog-names">Pay your fee</label> 
+          <select name="dog-names" id="dog-names"> 
+            <option value="full_fee">Pay Full Fee: 75,000</option> 
+              <option value="first_fee">First Installment: 25,000</option> 
+              <option value="second_fee">Second Installment: 25,000</option> 
+              <option value="third_fee">Third Installment: 25,000</option> 
+          </select>
+        
+      
 
           <div class="input-box">
             <span class="details">Minority Candidature Type </span>
@@ -145,5 +141,10 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script>
+    function selectItem(item) {
+      document.getElementById("dropdownMenuButton").textContent = item;
+    }
+    </script>
 </body>
 </html>
