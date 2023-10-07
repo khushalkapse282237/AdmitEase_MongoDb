@@ -28,10 +28,13 @@ app.get('/', (req, res) => {
   // Render your HTML file with EJS
   res.render('index');
 });
-// Start the server
-app.listen(port, () => {
-    console.log('Server(Website) is running');
-  });
+
+const db = mong.connection;
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
 
 //table 1 = signUp
 const signUp=new mong.Schema({
@@ -221,3 +224,7 @@ app.get('/registration_data', async (req, res) => {
     }
 });
 
+// Start the server
+app.listen(port, () => {
+    console.log('Server(Website) is running');
+  });
